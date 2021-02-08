@@ -34,7 +34,7 @@ const useStyles = makeStyles({
     }
 }) 
 
-const firstLetterUp = (name) => {
+export const firstLetterUp = (name) => {
     return name.charAt(0).toUpperCase() + name.slice(1)
 }
 
