@@ -70,7 +70,7 @@ const useStyles = makeStyles({
 
 const makeTypesString = (types) => {
     let typesList = ''
-    types.map(typeInfo => {
+    types.forEach(typeInfo => {
         typesList += `${typeInfo.type.name}, `
     })
     // subtract 2 last characters

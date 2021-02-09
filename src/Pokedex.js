@@ -7,6 +7,7 @@ import {
     CardContent, 
     CardMedia, 
     CircularProgress,
+    Container,
     Typography,
     TextField } from '@material-ui/core';
 import {fade, makeStyles} from '@material-ui/core/styles';
@@ -34,13 +35,18 @@ const useStyles = makeStyles(theme => ({
     CardContent: {
         textAlign: 'center'
     },
+    searchOption: {
+        display: 'flex',
+        marginRight: '200px'
+    },
     searchContainer: {
         display: 'flex',
         backgroundColor: fade(theme.palette.common.white, 0.15),
         paddingLeft: "20px",
         paddingRight: "20px",
         marginTop: "5px",
-        marginBottom: "5px"
+        marginBottom: "5px",
+        borderRadius: "8px"
     },
     searchIcon: {
         alignSelf: "flex-end",
@@ -109,6 +115,7 @@ const Pokedex = (props) => {
         <>
           <AppBar position="static">
             <Toolbar>
+                <Container className={classes.searchOption}>
                 <div className={classes.searchContainer}>
                 <SearchIcon className={classes.searchIcon}/>
                 <TextField 
@@ -118,6 +125,7 @@ const Pokedex = (props) => {
                 onChange={handleSearchChange}
                 />
                 </div>
+                </Container>
             </Toolbar>
           </AppBar>
           {pokemonData ? (
