@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {Typography, 
-    Link, 
+import {Typography,
     CircularProgress, 
     Button, 
     Container,
@@ -43,7 +42,7 @@ const useStyles = makeStyles({
         paddingTop: '20px'
     },
     pokemonName :{
-        fontSize: "40px",
+        fontSize: "45px",
         text: 'bold'
     },
     table: {
@@ -55,10 +54,17 @@ const useStyles = makeStyles({
         position: 'relative',
         padding: '1px',
         maxWidth: 300,
-        maxHeight: 180,
+        maxHeight: 170
     },
     tableCell: {
         size: 'small'
+    },
+    imgContainer: {
+        paddingTop: '10px'
+    },
+    tableMainContainer: {
+        paddingTop: '10px',
+        paddingBottom: '10px'
     }
 });
 
@@ -103,7 +109,10 @@ const Pokemon = props => {
             <Typography variant="h5" display="inline">Type: </Typography>
             <Typography variant="h6" display="inline" color='primary'>{typesAsString}</Typography>
             <br></br>
-            <img style={{width:"180px", height:"180px"}} src={fullImgUrl} alt=""/>
+            <Container className={classes.imgContainer}>
+            <img style={{width:"200px", height:"200px"}} src={fullImgUrl} alt=""/>
+            </Container>
+            <Container className={classes.tableMainContainer}>
             <TableContainer component={Paper} className={classes.tableContainer}>
                 <Table className={classes.table} aria-label="customized table">
                     <TableHead>
@@ -137,6 +146,7 @@ const Pokemon = props => {
                     </TableBody>
                 </Table>
                 </TableContainer>
+            </Container>
             </>
         )
     }
