@@ -2,8 +2,13 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Pics from the App:
+## Pictures from the App:
 ![alt text](https://github.com/AvshalomTam/react-material-ui-pokemon/blob/main/pics/pokemon1.png)
+
+You can filter from Toolbar:
+![alt text](https://github.com/AvshalomTam/react-material-ui-pokemon/blob/main/pics/pokemon3.png)
+
+When click on Pokemons Card: 
 ![alt text](https://github.com/AvshalomTam/react-material-ui-pokemon/blob/main/pics/pokemon2.png)
 
 ## Available Scripts
