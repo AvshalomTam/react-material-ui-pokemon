@@ -1,15 +1,26 @@
 import React, {useState} from 'react'
-import mockData from './mockData';
-import {Typography} from '@material-ui/core';
-import {Link} from "react-router-dom";
-
+import {Typography, Link, CircularProgress, Button} from '@material-ui/core';
+// import {Link} from "react-router-dom";
 import {firstLetterUp} from './Pokedex'
+import axios from 'axios';
+import { useEffect } from 'react';
 
 const Pokemon = props => {
-    const {match} = props;
+    const {history, match} = props;
     const {params} = match;
     const pokemonID = params.id
-    const [pokemon, setPokemon] = useState(mockData[`${pokemonID}`])
+    const [pokemon, setPokemon] = useState(undefined)
+
+    useEffect(() => {
+        axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonID}`)
+        .then((res) => {
+            const {data} = res
+            setPokemon(data)
+        })
+        .catch((error) => {
+            setPokemon(false)
+        })
+    }, [pokemonID])
 
     const generatePokemonJSX = () => {
         const {name, id, species, height, weight, types, sprites} = pokemon
@@ -20,9 +31,9 @@ const Pokemon = props => {
             <>
             <Typography variant="h2">
                 {`${id}. ${firstLetterUp(name)}`}
-                <img src={front_default}/>
+                <img src={front_default} alt=""/>
             </Typography>
-            <img style={{width:"100px", height:"100px"}} src={fullImgUrl}/>
+            <img style={{width:"100px", height:"100px"}} src={fullImgUrl} alt=""/>
             <Typography variant="h5">Pokemon Info:</Typography>
             <Typography>
                 {"Species: "}
@@ -40,7 +51,14 @@ const Pokemon = props => {
     }
     return (
         <>
-        {generatePokemonJSX(pokemon)}
+        {pokemon === undefined && <CircularProgress />}
+        {pokemon !== undefined && pokemon && generatePokemonJSX()}
+        {pokemon === false && <Typography>Pokemon not found!</Typography>}
+        {pokemon !== undefined && (
+            <Button variant="contained" onClick={() => history.push('/')}>
+                Back to All Pokemons
+            </Button>
+        )}
         </>
     )
 }
