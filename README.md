@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Pics from the App:
+![alt text](https://github.com/AvshalomTam/react-material-ui-pokemon/blob/main/pics/pokemon1.png)
+![alt text](https://github.com/AvshalomTam/react-material-ui-pokemon/blob/main/pics/pokemon2.png)
+
 ## Available Scripts
 
 In the project directory, you can run:
